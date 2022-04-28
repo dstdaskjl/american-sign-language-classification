@@ -102,7 +102,6 @@ class Data(Path):
                 pixel_count = int(math.sqrt(len(row)))
                 image_2d = np.reshape(row, (-1, pixel_count))
                 images.append(image_2d)
-                break
         return images
 
     def _img_2_csv(self, img_path: str, csv_path: str, mode='a') -> None:

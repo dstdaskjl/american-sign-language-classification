@@ -19,7 +19,7 @@ from path import Path
 # Save and load model with checkpoint
 # https://keras.io/api/callbacks/model_checkpoint/
 
-DEFAULT_EPOCH = 1
+DEFAULT_EPOCH = 1000
 BATCH_SIZE = 64
 
 path = Path()
