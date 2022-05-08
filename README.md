@@ -1,4 +1,4 @@
-Used CNN to classify ASL images.
+Used CNN to classify ASL images.<br>
 Collected datasets from Kaggle.
 [Dataset1](https://www.kaggle.com/datasets/grassknoted/asl-alphabet) and [Dataset2](https://www.kaggle.com/datasets/ayuraj/asl-dataset)
 
