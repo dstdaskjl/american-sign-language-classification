@@ -1,31 +1,31 @@
-from path import Path
+import variable as var
+from pylib.path import File, Directory
 
-path = Path()
+FILE = File()
+DIR = Directory()
 
-path.delete('Exception')
-path.delete('Shared')
-path.delete('research.py')
+DIR.delete('Exception')
+DIR.delete('Shared')
+DIR.delete('research.py')
 
-path.create('Exception')
-path.create('Shared')
+DIR.create('Exception')
+DIR.create('Shared')
 
-if not path.exists('Result'):
-    path.create('Result')
+if not DIR.exists('Result'):
+    DIR.create('Result')
 
-if not path.exists('History'):
-    path.create('History')
+if not DIR.exists('History'):
+    DIR.create('History')
     for i in range(1, 6):
-        if not path.exists('History', str(i * 1000)):
-            path.create('History', str(i * 1000))
+        if not DIR.exists('History', str(i * 1000)):
+            DIR.create('History', str(i * 1000))
 
-if not path.exists('Model'):
-    path.create('Model')
+if not DIR.exists('Model'):
+    DIR.create('Model')
     for i in range(1, 6):
-        if not path.exists('Model', str(i * 1000)):
-            path.create('Model', str(i * 1000))
+        if not DIR.exists('Model', str(i * 1000)):
+            DIR.create('Model', str(i * 1000))
 
-path.create(path.var.used_filepath)
-path.create(path.var.alive_filepath)
-path.write(path.var.status_filepath, '1')
-
-path.copy('main.py', 'research.py')
+DIR.create(var.USED_FILEPATH)
+DIR.create(var.ALIVE_FILEPATH)
+FILE.write_text(var.STATUS_FILEPATH, var.ALIVE)
