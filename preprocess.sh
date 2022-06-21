@@ -18,31 +18,31 @@ for filename in *; do
 done
 
 #  Create a directory to gather all files
-mkdir -p image/train/
+mkdir train/
 for letter in {A..Z}; do
-  mkdir image/train/${letter}
+  mkdir train/${letter}
 done
 
 #  Move train dataset to the image directory
 for letter in {A..Z}; do
   ls asl_alphabet_train/asl_alphabet_train/${letter} | sort -R | tail -500 | while read file; do
-    cp asl_alphabet_train/asl_alphabet_train/${letter}/${file} image/train/${letter}/$(ls image/train/${letter} | wc -l).jpg
+    cp asl_alphabet_train/asl_alphabet_train/${letter}/${file} train/${letter}/$(ls train/${letter} | wc -l).jpg
   done
   ls ASL_Dataset/Train/${letter} | sort -R | tail -500 | while read file; do
-    cp ASL_Dataset/Train/${letter}/${file} image/train/${letter}/$(ls image/train/${letter} | wc -l).jpg
+    cp ASL_Dataset/Train/${letter}/${file} train/${letter}/$(ls train/${letter} | wc -l).jpg
   done
   ls dataset/train/${letter} | sort -R | tail -500 | while read file; do
-    cp dataset/train/${letter}/${file} image/train/${letter}/$(ls image/train/${letter} | wc -l).jpg
+    cp dataset/train/${letter}/${file} train/${letter}/$(ls train/${letter} | wc -l).jpg
   done
 done
 
-#  Delete all files/directories except the image directory
-ls | grep -xv image | xargs rm -r
+#  Delete all files/directories except the train directory
+ls | grep -xv train | xargs rm -r
 
 #  Resize images to 200x200
-cd image/train/
+cd train/
 for letter in {A..Z}; do
-  echo ${filename}
+  echo ${letter}
   for filename in ${letter}/*; do
     if [ $(identify -format '%wx%h' ${filename}) != "200x200" ]; then
       convert ${filename} -resize 200x200 ${filename}
@@ -63,4 +63,4 @@ for letter in {A..Z}; do
   done
 done
 
-cd ../../
+cd ../
