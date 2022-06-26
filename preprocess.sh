@@ -39,13 +39,13 @@ done
 #  Delete all files/directories except the train directory
 ls | grep -xv train | xargs rm -r
 
-#  Resize images to 200x200
+#  Resize images to 100x100
 cd train/
 for letter in {A..Z}; do
   echo ${letter}
   for filename in ${letter}/*; do
-    if [ $(identify -format '%wx%h' ${filename}) != "200x200" ]; then
-      convert ${filename} -resize 200x200 ${filename}
+    if [ $(identify -format '%wx%h' ${filename}) != "100x100" ]; then
+      convert ${filename} -resize 100x100 ${filename}
     fi
   done
 done
