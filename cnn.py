@@ -60,7 +60,7 @@ class CNN:
                 for optimizer in optimizers:
                     for loss in loss_functions:
                         for drop_rate in drop_rates:
-                            name = hidden_activation + '_' + output_activation + '_' + optimizer + '_' + loss + '_' + drop_rate
+                            name = hidden_activation + '_' + output_activation + '_' + optimizer + '_' + loss + '_' + str(drop_rate)
 
                             try:
                                 print(name)
