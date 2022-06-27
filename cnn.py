@@ -23,7 +23,7 @@ from pylib.path import File, Directory
 # Save and load model with checkpoint
 # https://keras.io/api/callbacks/model_checkpoint/
 
-DEFAULT_EPOCH = 1000
+DEFAULT_EPOCH = 5000
 BATCH_SIZE = 64
 file = File()
 directory = Directory()
@@ -63,11 +63,12 @@ class CNN:
                             name = hidden_activation + '_' + output_activation + '_' + optimizer + '_' + loss + '_' + str(drop_rate)
 
                             try:
-                                print(name)
-                                model = self._create_model(hidden_activation, output_activation, optimizer, loss, drop_rate, x=x)
-                                callback = EarlyStopping(monitor='loss', patience=3)
-                                self._fit(model=model, callback=callback, name=name, x=x, y=y)
-                                print()
+                                if not directory.exists(const.MODEL_DIR, name):
+                                    print(name)
+                                    model = self._create_model(hidden_activation, output_activation, optimizer, loss, drop_rate, x=x)
+                                    callback = EarlyStopping(monitor='loss', patience=3)
+                                    self._fit(model=model, callback=callback, name=name, x=x, y=y)
+                                    print()
                             except Exception:
                                 file.write_text(
                                     filepath=directory.join(const.EXCEPTION_DIR, name + '.txt'),
