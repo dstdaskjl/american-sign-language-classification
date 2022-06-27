@@ -6,3 +6,9 @@ Collected datasets from Kaggle;
 
 <h1>Installation</h1>
 <code>python3 -m pip install pillow numpy tensorflow --upgrade</code>
+
+<h1>Usage</h1>
+<code>. preprocess.sh</code><br>
+<code>python3 cleanup.py</code><br>
+<code>python3 train.py</code><br>
+<code>python3 test.py</code>
